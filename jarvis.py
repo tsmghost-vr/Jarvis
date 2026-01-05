@@ -251,5 +251,16 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+# ------------------- Bot Events -------------------
+@bot.event
+async def on_ready():
+    print(f"Jarvis is online as {bot.user}")
+
+    # ------------------- Custom Status -------------------
+    await bot.change_presence(activity=discord.Game(name="Made by tsmghostvr"))
+
+    reminder_loop.start()
+
 # ------------------- Run Bot -------------------
-bot.run(token)
+bot.run("token")
+
